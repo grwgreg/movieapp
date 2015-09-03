@@ -32,4 +32,6 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  });
+  })
+  .constant('TMDB_URL', 'http://api.themoviedb.org/3/')
+  .constant('TMDB_KEY', '4a042dded23569864e1aadcaee82417d');

@@ -1,7 +1,8 @@
+<div class="loading" ng-show="main.loading">LOADING</div>
 <ul class="movie-list">
   <li ng-repeat="result in main.results">
     <h2>{{result.title}}</h2>
     <p>{{result.overview}}</p>
   </li>
 </ul>
-
+<pagination total-items="88" ng-model="main.page" ng-change="main.onPagination()" items-per-page="10" max-size="5" boundary-links="true"></pagination>

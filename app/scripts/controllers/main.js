@@ -16,11 +16,12 @@ angular.module('mymovieApp')
     vm.totalItems = 0;
     vm.results = [];
 
+
     vm.onPagination = function() {
       console.log('page ', vm.page);
       vm.loading = true;
       vm.results = [];
-      movieData.get(vm.page).success(function(data) {
+      movieData.$popular({page: vm.page}).then(function(data) {
           console.log('yes', data);
           setTimeout(function(){
             $scope.$apply(function() {
@@ -30,7 +31,7 @@ angular.module('mymovieApp')
             });
           },1000);//simulate slow load
         })
-        .error(function(e) {
+        .catch(function(e) {
           $log.error(e);
         });
     };
@@ -44,7 +45,5 @@ setInterval(function() {
           });
 }, 8000);
 */
-
-
 
   }]);

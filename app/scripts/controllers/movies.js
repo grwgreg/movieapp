@@ -2,26 +2,29 @@
 
 /**
  * @ngdoc function
- * @name mymovieApp.controller:MainCtrl
+ * @name mymovieApp.controller:MoviesCtrl
  * @description
- * # MainCtrl
+ * # MoviesCtrl
  * Controller of the mymovieApp
  */
 angular.module('mymovieApp')
-  .controller('MainCtrl', function($scope, movieData, $log) {
+  .controller('MoviesCtrl', function($routeParams, $scope, movieData, $log) {
     var vm = this;
     
     vm.loading = true;
     vm.page = 1;//route param maybe?
     vm.totalItems = 0;
     vm.results = [];
+    vm.searchQuery = $routeParams.search;
 
+    var moviesGetter = $routeParams.search ? 'search' : 'popular';
 
     vm.onPagination = function() {
       console.log('page ', vm.page);
+      console.log('rparam ', $routeParams);
       vm.loading = true;
       vm.results = [];
-      movieData.$popular({page: vm.page}).then(function(data) {
+      movieData[moviesGetter](vm).then(function(data) {
           console.log('yes', data);
           setTimeout(function(){
             $scope.$apply(function() {

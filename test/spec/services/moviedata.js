@@ -14,7 +14,7 @@ describe('Service: movieData', function () {
     $httpBackend = _$httpBackend_;
   }));
 
-  it('has $popular method', function () {
+  it('has popular method', function () {
     $httpBackend.expect('GET', function(url) {
       url = url.split('?');
       var match = url[0] === 'http://api.themoviedb.org/3/discover/movie';
@@ -22,7 +22,20 @@ describe('Service: movieData', function () {
       match = match && ~url[1].indexOf('sort_by=popularity.desc');
       return match;
     }).respond({});
-    movieData.$popular({page: 2});
+    movieData.popular({page: 2});
+    $httpBackend.flush();
+    $httpBackend.verifyNoOutstandingExpectation();
+  });
+
+  it('has search method', function () {
+    $httpBackend.expect('GET', function(url) {
+      url = url.split('?');
+      var match = url[0] === 'http://api.themoviedb.org/3/search/movie';
+      match = match && ~url[1].indexOf('page=2');
+      match = match && ~url[1].indexOf('query=batman');
+      return match;
+    }).respond({});
+    movieData.search({page: 2, searchQuery: 'batman'});
     $httpBackend.flush();
     $httpBackend.verifyNoOutstandingExpectation();
   });

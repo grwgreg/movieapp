@@ -1,6 +1,6 @@
 //https://developers.themoviedb.org/3/discover
 angular.module('mymovieApp')
-  .service('movieData', ['$resource', 'TMDB_KEY', 'TMDB_URL', function($resource, TMDB_KEY, TMDB_URL) {
+  .service('movieData', function($resource, TMDB_KEY, TMDB_URL) {
 
     var MovieData = $resource(TMDB_URL,
       {},
@@ -20,4 +20,4 @@ angular.module('mymovieApp')
 
     return new MovieData();
 
-  }]);
+  });

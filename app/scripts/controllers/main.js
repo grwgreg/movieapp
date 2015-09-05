@@ -8,7 +8,7 @@
  * Controller of the mymovieApp
  */
 angular.module('mymovieApp')
-  .controller('MainCtrl', ['$scope', 'movieData', '$log', function($scope, movieData, $log) {
+  .controller('MainCtrl', function($scope, movieData, $log) {
     var vm = this;
     
     vm.loading = true;
@@ -46,4 +46,4 @@ setInterval(function() {
 }, 8000);
 */
 
-  }]);
+  });

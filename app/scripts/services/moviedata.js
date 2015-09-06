@@ -1,3 +1,4 @@
+'use strict';
 //https://developers.themoviedb.org/3/discover
 angular.module('mymovieApp')
   .service('movieData', function($resource, TMDB_KEY, TMDB_URL) {

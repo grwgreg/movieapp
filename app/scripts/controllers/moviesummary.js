@@ -10,4 +10,5 @@
 angular.module('mymovieApp')
   .controller('MovieSummaryCtrl', function($scope, $log) {
     var vm = this;
+    //todo
   });

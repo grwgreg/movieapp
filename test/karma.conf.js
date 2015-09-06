@@ -17,6 +17,10 @@ module.exports = function(config) {
       'jasmine'
     ],
 
+    preprocessors: {
+      '**/*.html': ['ng-html2js']
+    },
+
     // list of files / patterns to load in the browser
     files: [
       // bower:js
@@ -34,7 +38,9 @@ module.exports = function(config) {
       // endbower
       'app/scripts/**/*.js',
       'test/mock/**/*.js',
-      'test/spec/**/*.js'
+      'test/spec/**/*.js',
+      //ng-html2js
+      'app/views/**/*.html'
     ],
 
     // list of files / patterns to exclude
@@ -59,7 +65,8 @@ module.exports = function(config) {
     // Which plugins to enable
     plugins: [
       'karma-phantomjs-launcher',
-      'karma-jasmine'
+      'karma-jasmine',
+      'karma-ng-html2js-preprocessor'
     ],
 
     // Continuous Integration mode
@@ -78,5 +85,36 @@ module.exports = function(config) {
     // },
     // URL root prevent conflicts with the site root
     // urlRoot: '_karma_'
-  });
+
+    ngHtml2JsPreprocessor: {
+      // strip this from the file path
+      stripPrefix: 'app',
+      //stripSuffix: '.ext',
+      // prepend this to the
+      //prependPrefix: 'served/',
+
+      // or define a custom transform function
+      // - cacheId returned is used to load template
+      //   module(cacheId) will return template at filepath
+/*
+      cacheIdFromPath: function(filepath) {
+        // example strips 'public/' from anywhere in the path
+        // module(app/templates/template.html) => app/public/templates/template.html
+        console.log('filepath karma, ', filepath);
+        //var cacheId = filepath.strip('app/', '');
+        //return cacheId;
+//        return filepath;
+        return '/views/moviesummary.html';
+      },
+*/
+
+      // - setting this option will create only a single module that contains templates
+      //   from all the files, so you can load them all with module('foo')
+      // - you may provide a function(htmlPath, originalPath) instead of a string
+      //   if you'd like to generate modules dynamically
+      //   htmlPath is a originalPath stripped and/or prepended
+      //   with all provided suffixes and prefixes
+      moduleName: 'templates'
+    }
+    });
 };

@@ -8,20 +8,20 @@
  * Controller of the mymovieApp
  */
 angular.module('mymovieApp')
-  .controller('MoviesCtrl', function($routeParams, $scope, movieData, $log) {
+  .controller('MoviesCtrl', function($stateParams, $scope, movieData, $log) {
     var vm = this;
     
     vm.loading = true;
     vm.page = 1;//route param maybe?
     vm.totalItems = 0;
     vm.results = [];
-    vm.searchQuery = $routeParams.search;
+    vm.searchQuery = $stateParams.search;
 
-    var moviesGetter = $routeParams.search ? 'search' : 'popular';
+    var moviesGetter = $stateParams.search ? 'search' : 'popular';
 
     vm.onPagination = function() {
       console.log('page ', vm.page);
-      console.log('rparam ', $routeParams);
+      console.log('rparam ', $stateParams);
       vm.loading = true;
       vm.results = [];
       movieData[moviesGetter](vm).then(function(data) {

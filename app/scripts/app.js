@@ -13,31 +13,32 @@ angular
     'ngAnimate',
     'ngCookies',
     'ngResource',
-    'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'ui.router'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
+  .config(function ($stateProvider, $urlRouterProvider) {
+    $stateProvider
+      .state('movies', {
+        url: '/',
         templateUrl: 'views/movies.html',
         controller: 'MoviesCtrl',
         controllerAs: 'movies'
       })
-      .when('/search/:search', {
+      .state('search', {
+        url: '/search/:search',
         templateUrl: 'views/movies.html',
         controller: 'MoviesCtrl',
         controllerAs: 'movies'
       })
-      .when('/movie/:movieID', {
+      .state('movie', {
+        url: '/movie/:movieID',
         templateUrl: 'views/movie.html',
         controller: 'MovieCtrl',
         controllerAs: 'movie'
-      })
-      .otherwise({
-        redirectTo: '/'
       });
+    $urlRouterProvider.otherwise('/');
   })
   .constant('TMDB_URL', 'http://api.themoviedb.org/3/')
   .constant('TMDB_KEY', '4a042dded23569864e1aadcaee82417d');

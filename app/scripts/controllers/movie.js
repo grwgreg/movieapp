@@ -8,9 +8,9 @@
  * Controller of the mymovieApp
  */
 angular.module('mymovieApp')
-  .controller('MovieCtrl', function($routeParams, $scope, movieData, $log) {
+  .controller('MovieCtrl', function($stateParams, $scope, movieData, $log) {
     var vm = this;
     
-    vm.ID = $routeParams.movieID;
+    vm.ID = $stateParams.movieID;
 
   });

@@ -3,7 +3,7 @@
     <img ng-src="http://image.tmdb.org/t/p/w500{{movieData.poster_path}}" ng-hide="!movieData.poster_path" />
   </div>                     
   <div class="col-md-9 col-sm-8">
-    <h2><a href="#/movie/{{movieData.id}}">{{movieData.title}}</a></h2>
+    <h2><a ui-sref="movie({movieID: movieData.id})">{{movieData.title}}</a></h2>
     <div>
       <label>Released:</label>
       <span>{{movieData.release_date | date:'MMM d, yyyy'}}</span>
@@ -13,7 +13,7 @@
       <rating ng-model="movieData.vote_average" max="10" readonly="true"></rating>
       <span>({{movieData.vote_count}} votes)</span>
     </div>
-    <a href="#/movie/{{movieData.id}}" class="button">
+    <a ui-sref="movie({movieID: 'movieData.id'})" class="button">
       <span class="glyphicon glyphicon-plus"></span>View Full Details
     </a>
   </div>                     

@@ -28,7 +28,7 @@ angular.module('mymovieApp')
           console.log('yes', data);
           setTimeout(function(){
             $scope.$apply(function() {
-              vm.results = data.results
+              vm.results = data.results;
               vm.loading = false;
               vm.totalItems = data.total_results;
             });

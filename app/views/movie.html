@@ -1,3 +1,46 @@
-<div>
-im a movie {{movie.ID}}
+<div class="movie-single">
+  <div class="loading row" ng-show="movie.loading">LOADING</div>
+  <div ng-hide="movie.loading" class="row">
+    <div class="col-xs-8  col-sm-4">
+      <img ng-src="http://image.tmdb.org/t/p/w500/{{movie.info.poster_path}}"/>
+    </div>
+    <div class="col-xs-12 col-sm-8">
+      <h2>{{movie.info.title}}</h2>
+      <div class="movie-row">
+        <div>Genres</div>
+        <div>
+          <ul>
+            <li ng-repeat="genre in movie.info.genres">{{genre.name}}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="movie-row">
+        <div>Overview</div>
+        <div>{{movie.info.overview}}</div>
+      </div>
+      <div class="movie-row">
+        <div>Runtime</div>
+        <div>{{movie.info.runtime | mytime:'mm':'hhh mmm':false }}</div>
+      </div>
+      <div class="movie-row">
+        <div>Production Countries</div>
+        <div>
+          <ul>
+            <li ng-repeat="country in movie.info.production_countries">{{country.name}}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="movie-row">
+        <div>Release Date</div>
+        <div>{{movie.info.release_date | date:'MMM d, yyyy'}}</div>
+      </div>
+      <div class="movie-row">
+        <div>Score:</div>
+        <div>
+          <rating ng-model="movie.info.vote_average" max="10" readonly="true"></rating>
+          <span>({{movie.info.vote_count}} votes)</span>
+        </div>
+      </div>
+    </div>
+  </div><!-- /row -->
 </div>

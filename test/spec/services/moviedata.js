@@ -39,4 +39,15 @@ describe('Service: movieData', function () {
     $httpBackend.flush();
     $httpBackend.verifyNoOutstandingExpectation();
   });
+
+  it('has movie method', function () {
+    $httpBackend.expect('GET', function(url) {
+      url = url.split('?');
+      var match = url[0] === 'http://api.themoviedb.org/3/movie/123123';
+      return match;
+    }).respond({});
+    movieData.movie({ID: '123123'});
+    $httpBackend.flush();
+    $httpBackend.verifyNoOutstandingExpectation();
+  });
 });

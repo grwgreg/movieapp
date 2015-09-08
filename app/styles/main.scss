@@ -2,20 +2,39 @@
 // endbower
 
 img {
-max-width: 100%;//todo doesn't bootstrap do this?
+  max-width: 100%;
+  //todo doesn't bootstrap do this?
 }
 
 .movie-summary {
-label {
-min-width: 80px;
-}
+  label {
+    min-width: 80px;
+  }
 }
 
 .movie-list {
-padding: 0;
-margin: 0;
-li {
-list-style: none;
-padding: 10px 0;
+  padding: 0;
+  margin: 0;
+  li {
+    list-style: none;
+    padding: 10px 0;
+  }
 }
+
+.movie-row {
+  display: flex;
+  padding: 10px 0;
+  > div:nth-child(1) {
+    min-width: 25%;
+    max-width: 25%;
+  }
+}
+
+@media all and (max-width: 400px) {
+  .movie-row {
+    display: block;
+  }
+  .movie-row > div:first-child {
+    max-width: 100%;
+  }
 }

@@ -26,6 +26,14 @@ angular.module('mymovieApp')
           },
           cache: true
         },
+        movie: {
+          method:'GET',
+          url: TMDB_URL + 'movie/:movieID',
+          params: {
+            api_key: TMDB_KEY
+          },
+          cache: true
+        },
 
       }
     );
@@ -41,6 +49,9 @@ angular.module('mymovieApp')
       },
       search: function(vm) {
         return movieData.$search({page: vm.page, query: vm.searchQuery});
+      },
+      movie: function(vm) {
+        return movieData.$movie({movieID: vm.ID});
       },
     };
 

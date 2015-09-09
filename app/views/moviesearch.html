@@ -1,0 +1,24 @@
+<div class="movie-search container">
+  <div class="row">
+    <form class="col-md-8 col-md-offset-2" role="form">
+      <div class="input-group input-group-lg">
+        <input ng-model="search.query" type="text" class="form-control" placeholder="Search">
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-default glyphicon glyphicon-search" ng-click="search.submit(search.query)"></button>
+        </span>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" ng-model="search.type" name="searchtype" value="movies" checked>
+          Movies
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" ng-model="search.type" name="searchtype" value="people">
+          People
+        </label>
+      </div>
+    </form>
+  </div>
+</div>

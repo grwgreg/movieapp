@@ -1,7 +1,7 @@
 'use strict';
 
 /*
- *  * Directive for a single preflop hand ie AK, JJ on the main preflophand object
+ *  * Directive for a movie summary, displayed in search results
  *   */
 angular.module('mymovieApp')
 .directive('movieSummary', [function() {
@@ -13,7 +13,7 @@ angular.module('mymovieApp')
     },  
     templateUrl: '/views/moviesummary.html',
     controller: 'MovieSummaryCtrl',
-    controllerAs: 'summary',
+    controllerAs: 'summary'
   };  
 }]);
 

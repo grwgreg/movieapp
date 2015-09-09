@@ -40,18 +40,15 @@ angular.module('mymovieApp')
 
     var movieData = new MovieData();
 
-    //todo is passing in whole vm bad? thing is different functions may take different params
-    //but ideally i want just 1 function call based on the route
-    //alternative is multiple controllers and duplicated code...
     return {
-      popular: function(vm) {
-        return movieData.$popular({page: vm.page});
+      popular: function(params) {
+        return movieData.$popular({page: params.page});
       },
-      search: function(vm) {
-        return movieData.$search({page: vm.page, query: vm.searchQuery});
+      search: function(params) {
+        return movieData.$search({page: params.page, query: params.searchQuery});
       },
-      movie: function(vm) {
-        return movieData.$movie({movieID: vm.ID});
+      movie: function(params) {
+        return movieData.$movie({movieID: params.movieID});
       },
     };
 

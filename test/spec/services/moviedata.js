@@ -46,7 +46,7 @@ describe('Service: movieData', function () {
       var match = url[0] === 'http://api.themoviedb.org/3/movie/123123';
       return match;
     }).respond({});
-    movieData.movie({ID: '123123'});
+    movieData.movie({movieID: '123123'});
     $httpBackend.flush();
     $httpBackend.verifyNoOutstandingExpectation();
   });

@@ -11,8 +11,10 @@ describe('Controller: MoviesCtrl', function () {
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
+    var resolved = {};
     MoviesCtrl = $controller('MoviesCtrl', {
-      $scope: scope
+      $scope: scope,
+      moviesResponse: {data:[]}
       // place here mocked dependencies
     });
   }));

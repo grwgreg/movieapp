@@ -74,6 +74,28 @@ angular
             return movieData.movie({movieID: $stateParams.movieID});
           }
         }
+      })
+      .state('people', {
+        url: '/people/:search',
+        templateUrl: 'views/people.html',
+        controller: 'PeopleCtrl',
+        controllerAs: 'people',
+        resolve: {
+          peopleResponse: function(movieData, $stateParams) {
+            return movieData.people({page: 1, peopleQuery: $stateParams.search});
+          }
+        }
+      })
+      .state('peoplepaginated', {
+        url: '/people/:search/page/:page',
+        templateUrl: 'views/people.html',
+        controller: 'PeopleCtrl',
+        controllerAs: 'people',
+        resolve: {
+          peopleResponse: function(movieData, $stateParams) {
+            return movieData.people({page: $stateParams.page, peopleQuery: $stateParams.search});
+          }
+        }
       });
     $urlRouterProvider.otherwise('/');
   })

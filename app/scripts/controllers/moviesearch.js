@@ -13,7 +13,7 @@ angular.module('mymovieApp')
     vm.query = '';//ngModel on text input
     vm.type = 'movies';//ngModel on radios
     vm.submit = function(query) {
-      var route = vm.type === 'movies' ? 'search' : 'peoplesearch';
-      $state.go('search', {search: query});
+      var route = vm.type === 'movies' ? 'search' : 'people';
+      $state.go(route, {search: query});
     }
   });

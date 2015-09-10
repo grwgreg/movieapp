@@ -11,7 +11,7 @@ angular.module('mymovieApp')
   .controller('MoviesCtrl', function($anchorScroll, moviesResponse, $state, $stateParams) {
     var vm = this;
     
-    vm.page = $stateParams.page;
+    vm.page = $stateParams.page || 1;
     vm.results = moviesResponse.results;
     vm.totalItems = moviesResponse.total_results;
     vm.onPagination = function() {

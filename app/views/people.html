@@ -1,0 +1,7 @@
+<ul class="people-list">
+  <li ng-hide="people.results.length">Sorry, no results were found</li>
+  <li ng-repeat="result in people.results">
+    <person-summary person-data="result"></person-summary>
+  </li>
+</ul>
+<pagination total-items="people.totalItems" ng-model="people.page" ng-change="people.onPagination()" items-per-page="20" max-size="5" boundary-links="true" direction-links="false"></pagination>

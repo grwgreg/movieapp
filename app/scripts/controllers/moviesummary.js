@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc function
- * @name mymovieApp.controller:MoviesCtrl
+ * @name mymovieApp.controller:MovieSummaryCtrl
  * @description
  * # MovieSummaryCtrl
  * Controller of the mymovieApp

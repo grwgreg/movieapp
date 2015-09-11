@@ -7,19 +7,30 @@ describe('Controller: MoviesCtrl', function () {
 
   var MoviesCtrl,
     scope;
+  var $state = {
+    go: function(){}
+  };
+  var $anchorScroll = {
+    fn: function(){}
+  };
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    var resolved = {};
+    spyOn($state,'go');
+    spyOn($anchorScroll, 'fn');
     MoviesCtrl = $controller('MoviesCtrl', {
       $scope: scope,
-      moviesResponse: {data:[]}
-      // place here mocked dependencies
+      moviesResponse: {data:[]},
+      $state: $state,
+      $stateParams: {page:3},
+      $anchorScroll: $anchorScroll.fn
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-//    expect(MoviesCtrl.awesomeThings.length).toBe(3);
+  it('scrollsTop and redirects to new route when onPagination is invoked', function () {
+    MoviesCtrl.onPagination();
+    expect($state.go).toHaveBeenCalledWith('paginated', {page:3});
+    expect($anchorScroll.fn).toHaveBeenCalled();
   });
 });

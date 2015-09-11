@@ -40,13 +40,18 @@ img {
 }
 
 .loading {
-opacity: 0.9;
-cursor: progress;
+  opacity: 0.9;
+  cursor: progress;
 }
 
 .movie-search {
-.radio {
-display: inline-block;
-padding-right: 15px;
+  .radio {
+    display: inline-block;
+    padding-right: 15px;
+  }
 }
+
+.modal-content {
+padding: 20px;
+text-align: center;
 }

@@ -99,7 +99,7 @@ angular
       });
     $urlRouterProvider.otherwise('/');
   })
-  .run(function($rootScope) {
+  .run(function($rootScope,$log, alertService) {
     //todo maybe create a model that you can toggle this value on and inject into top level ctrl instead of doing directly on rootscope?
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options) {
       if (toState && toState.resolve) {
@@ -109,6 +109,15 @@ angular
     $rootScope.$on('$stateChangeSuccess', function(e) {
       $rootScope.loadingRoute = false;
     }); 
+    $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
+      if (error.status === 404) {
+        $rootScope.loadingRoute = false;
+        $log.log('404 alert service here todo');//todo
+        alertService.alert("404 Sorry this page wasn't found");
+      }
+      $log.warn('event', event);
+      $log.error('error', error);
+    });
   })
   .constant('TMDB_URL', 'http://api.themoviedb.org/3/')
   .constant('TMDB_KEY', '4a042dded23569864e1aadcaee82417d');

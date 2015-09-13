@@ -50,4 +50,15 @@ describe('Service: movieData', function () {
     $httpBackend.flush();
     $httpBackend.verifyNoOutstandingExpectation();
   });
+
+  it('has person method', function () {
+    $httpBackend.expect('GET', function(url) {
+      url = url.split('?');
+      var match = url[0] === 'http://api.themoviedb.org/3/person/171717';
+      return match;
+    }).respond({});
+    movieData.person({personID: '171717'});
+    $httpBackend.flush();
+    $httpBackend.verifyNoOutstandingExpectation();
+  });
 });

@@ -1,3 +1,7 @@
-<div>
-this is credits view
+<div class="person-credits">
+<div ng-repeat="role in credits.roles">
+<a ui-sref="movie({movieID: role.id})">{{role.title}}</a>
+{{role.character}}
+{{role.release_date}}
+</div>
 </div>

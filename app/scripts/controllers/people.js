@@ -11,7 +11,6 @@ angular.module('mymovieApp')
   .controller('PeopleCtrl', function($anchorScroll, peopleResponse, $state, $stateParams) {
     var vm = this;
     
-console.log('peopleResponse', peopleResponse);
     vm.page = $stateParams.page || 1;
     vm.results = peopleResponse.results;
     vm.totalItems = peopleResponse.total_results;

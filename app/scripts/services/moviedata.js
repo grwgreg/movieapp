@@ -43,6 +43,22 @@ angular.module('mymovieApp')
             api_key: TMDB_KEY
           },
           cache: true
+        },
+        person: {
+          method:'GET',
+          url: TMDB_URL + 'person/:personID',
+          params: {
+            api_key: TMDB_KEY
+          },
+          cache: true
+        },
+        credits: {
+          method:'GET',
+          url: TMDB_URL + 'person/:personID/movie_credits',
+          params: {
+            api_key: TMDB_KEY
+          },
+          cache: true
         }
       }
     );
@@ -61,6 +77,12 @@ angular.module('mymovieApp')
       },
       people: function(params) {
         return movieData.$people({page: params.page, query: params.peopleQuery});
+      },
+      person: function(params) {
+        return movieData.$person({personID: params.personID});
+      },
+      credits: function(params) {
+        return movieData.$credits({personID: params.personID});
       }
     };
 

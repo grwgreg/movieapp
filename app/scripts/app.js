@@ -103,55 +103,61 @@ angular
         templateUrl: 'views/person/person.html',
         controller: 'PersonCtrl',
         controllerAs: 'person',
-/*
         resolve: {
-          peopleResponse: function(movieData, $stateParams) {
-            return movieData.people({page: $stateParams.page, peopleQuery: $stateParams.search});
+          personResponse: function(movieData, $stateParams) {
+            return movieData.person({personID: $stateParams.personID});
           }
         }
-*/
       })
       .state('person.details', {
         url: '/details',
         templateUrl: 'views/person/details.html',
         controller: 'PersonDetailsCtrl',
         controllerAs: 'details',
-/*
-        resolve: {
-          peopleResponse: function(movieData, $stateParams) {
-            return movieData.people({page: $stateParams.page, peopleQuery: $stateParams.search});
-          }
-        }
-*/
       })
       .state('person.credits', {
         url: '/credits',
         templateUrl: 'views/person/credits.html',
         controller: 'PersonCreditsCtrl',
         controllerAs: 'credits',
-/*
         resolve: {
-          peopleResponse: function(movieData, $stateParams) {
-            return movieData.people({page: $stateParams.page, peopleQuery: $stateParams.search});
+          creditsResponse: function(movieData, $stateParams) {
+            return movieData.credits({personID: $stateParams.personID});
+          },
+          slow: function($q) {
+            return $q(function(resolve) {
+              setTimeout(function() {resolve('hello')},3000);
+            });
           }
         }
-*/
       });
     $urlRouterProvider.otherwise('/');
   })
   .run(function($rootScope,$log, alertService) {
-    //todo maybe create a model that you can toggle this value on and inject into top level ctrl instead of doing directly on rootscope?
+    //todo maybe create a model that you can toggle the loading value on and inject into top level ctrl instead of doing directly on rootscope?
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options) {
-      if (toState && toState.resolve) {
+      //todo make a service where you register states that require a tab loading class instead of a top level route loading class
+      var toStateArr = toState.name.split('.');
+      var fromStateArr = fromState.name.split('.');
+      var isChildState = toStateArr.length > 1;
+      //if navigating from person.details to person.credits then set loadingChildRoute
+      //if navigating from movie to person.credits then set loadingRoute
+      if (isChildState && toState.name !== 'person.details' && fromStateArr[0] === toStateArr[0]) {
+        $rootScope.loadingChildRoute = true;
+      } else if (toState && toState.resolve) {
         $rootScope.loadingRoute = true;
       }
     });
     $rootScope.$on('$stateChangeSuccess', function(e) {
       $rootScope.loadingRoute = false;
+      $rootScope.loadingChildRoute = false;
     }); 
     $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
       if (error.status === 404) {
         $rootScope.loadingRoute = false;
+        $rootScope.loadingChildRoute = false;
+        //todo, possibly use alert service for specific child route not found to display 404 in tabs container
+        //instead of in a modal box, which may seem confusing to user
         $log.log('404 alert service here todo');//todo
         alertService.alert("404 Sorry this page wasn't found");
       }

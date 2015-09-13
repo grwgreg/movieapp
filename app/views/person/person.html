@@ -1,5 +1,13 @@
 <div class="person">
-  {{person.info}}
+  <div class="row">            
+    <div class="col-md-3 col-sm-4">
+      <img ng-src="http://image.tmdb.org/t/p/w500{{person.profile_path}}" ng-hide="!person.profile_path" />
+    </div>                     
+    <div class="col-md-9 col-sm-8">
+      <h1>{{person.name}}</h1>
+      <p>{{person.biography}}</p>
+    </div>                     
+  </div><!-- /row -->
   <tabs data="person.tabData" type="tabs" />
   <div ui-view ></div>
 </div>

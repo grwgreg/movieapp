@@ -3,7 +3,7 @@
     <img ng-src="http://image.tmdb.org/t/p/w500{{personData.profile_path}}" ng-hide="!personData.profile_path" />
   </div>                     
   <div class="col-md-9 col-sm-8">
-    <h2><a xui-sref="person({personID: personData.id})">{{summary.name}}</a></h2>
+    <h2><a ui-sref="person.details({personID: personData.id})">{{summary.name}}</a></h2>
     <div>
       <label>Known For:</label>
       <ul>
@@ -16,7 +16,7 @@
       <label>Popularity:</label>
       <rating ng-model="summary.popularity" max="10" readonly="true"></rating>
     </div>
-    <a xui-sref="person({personID: 'personData.id'})" class="button">
+    <a ui-sref="person.details({personID: 'personData.id'})" class="button">
       <span class="glyphicon glyphicon-plus"></span>View Full Details
     </a>
   </div>                     

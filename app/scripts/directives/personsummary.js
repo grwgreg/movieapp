@@ -11,7 +11,7 @@ angular.module('mymovieApp')
     scope: {
       personData: '='//todo would individual @'s be better? don't need 2way binding
     },  
-    templateUrl: '/views/personsummary.html',
+    templateUrl: '/views/person/summary.html',
     controller: 'PersonSummaryCtrl',
     controllerAs: 'summary'
   };  

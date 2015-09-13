@@ -16,7 +16,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.bootstrap',
-    'ui.router'
+    'ui.router',
+    'ui.router.tabs'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
@@ -96,6 +97,45 @@ angular
             return movieData.people({page: $stateParams.page, peopleQuery: $stateParams.search});
           }
         }
+      })
+      .state('person', {
+        url: '/person/:personID',
+        templateUrl: 'views/person/person.html',
+        controller: 'PersonCtrl',
+        controllerAs: 'person',
+/*
+        resolve: {
+          peopleResponse: function(movieData, $stateParams) {
+            return movieData.people({page: $stateParams.page, peopleQuery: $stateParams.search});
+          }
+        }
+*/
+      })
+      .state('person.details', {
+        url: '/details',
+        templateUrl: 'views/person/details.html',
+        controller: 'PersonDetailsCtrl',
+        controllerAs: 'details',
+/*
+        resolve: {
+          peopleResponse: function(movieData, $stateParams) {
+            return movieData.people({page: $stateParams.page, peopleQuery: $stateParams.search});
+          }
+        }
+*/
+      })
+      .state('person.credits', {
+        url: '/credits',
+        templateUrl: 'views/person/credits.html',
+        controller: 'PersonCreditsCtrl',
+        controllerAs: 'credits',
+/*
+        resolve: {
+          peopleResponse: function(movieData, $stateParams) {
+            return movieData.people({page: $stateParams.page, peopleQuery: $stateParams.search});
+          }
+        }
+*/
       });
     $urlRouterProvider.otherwise('/');
   })

@@ -59,6 +59,14 @@ angular.module('mymovieApp')
             api_key: TMDB_KEY
           },
           cache: true
+        },
+        images: {
+          method:'GET',
+          url: TMDB_URL + 'person/:personID/images',
+          params: {
+            api_key: TMDB_KEY
+          },
+          cache: true
         }
       }
     );
@@ -83,6 +91,9 @@ angular.module('mymovieApp')
       },
       credits: function(params) {
         return movieData.$credits({personID: params.personID});
+      },
+      images: function(params) {
+        return movieData.$images({personID: params.personID});
       }
     };
 

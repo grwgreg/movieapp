@@ -62,3 +62,13 @@ img {
     cursor: progress;
   }
 }
+
+.person-images > div {
+  display: inline-block;
+  vertical-align: top;
+  width: 50%;
+  img {
+    display: block;
+    width: 100%;
+  }
+}

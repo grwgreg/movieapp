@@ -124,7 +124,23 @@ angular
           creditsResponse: function(movieData, $stateParams) {
             return movieData.credits({personID: $stateParams.personID});
           },
-          slow: function($q) {
+          slow: function($q) {//slow load on purpose to show tab loading class
+            return $q(function(resolve) {
+              setTimeout(function() {resolve('hello')},3000);
+            });
+          }
+        }
+      })
+      .state('person.images', {
+        url: '/images',
+        templateUrl: 'views/person/images.html',
+        controller: 'PersonImagesCtrl',
+        controllerAs: 'images',
+        resolve: {
+          imagesResponse: function(movieData, $stateParams) {
+            return movieData.images({personID: $stateParams.personID});
+          },
+          slow: function($q) {//slow load on purpose to show tab loading class
             return $q(function(resolve) {
               setTimeout(function() {resolve('hello')},3000);
             });

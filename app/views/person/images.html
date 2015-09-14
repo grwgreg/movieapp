@@ -1,0 +1,5 @@
+<div class="person-images">
+  <div ng-repeat="image in images.images">
+    <img ng-src="http://image.tmdb.org/t/p/w500{{image.file_path}}" ng-hide="!image.file_path" />
+  </div>
+</div>

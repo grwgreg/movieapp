@@ -21,6 +21,10 @@ angular.module('mymovieApp')
       vm.popularity = personResponse.popularity;
     };
 
+    //do it this way because this controller won't load when child route controller is directly
+    //navigated to. we have to get the person data from child controller and call this fn
+    //ie from child ctrl, $scope.person.setData(theAjaxResponseForSinglePerson)
+    //todo, see if theres a better way to do this, child ctrl shouldn't be aware of parent imo
     vm.setData(personResponse);
     
     vm.tabData   = [
@@ -31,6 +35,10 @@ angular.module('mymovieApp')
       {
         heading: 'Credits',
         route:   'person.credits'
+      },
+      {
+        heading: 'Images',
+        route:   'person.images'
       }
     ];
 

@@ -63,6 +63,33 @@ img {
   }
 }
 
+.person {
+  .tab-container {
+    margin-top: 40px;
+  }
+  div[ui-view] {
+    > div {
+      padding: 30px;
+    }
+  }
+}
+
+.person-credit > div,
+.person-details > div {
+  label {
+    width: 120px;
+  }
+  > div {
+    display: inline-block;
+  }
+}
+
+.person-credit {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
 .person-images > div {
   display: inline-block;
   vertical-align: top;

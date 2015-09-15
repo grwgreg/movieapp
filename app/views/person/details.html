@@ -1,11 +1,11 @@
 <div class="person-details">
   <div>
     <label>Born:</label>
-    <div>{{person.birthday}}</div>
+    <div>{{person.birthday | date:'MMM d, yyyy'}}</div>
   </div>
   <div ng-show="person.deathday">
     <label>Died:</label>
-    <div>{{person.deathday}}</div>
+    <div>{{person.deathday | date:'MMM d, yyyy'}}</div>
   </div>
   <div>
     <label>Place Of Birth:</label>

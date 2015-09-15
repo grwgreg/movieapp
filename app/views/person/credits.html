@@ -1,7 +1,16 @@
 <div class="person-credits">
-<div ng-repeat="role in credits.roles">
-<a ui-sref="movie({movieID: role.id})">{{role.title}}</a>
-{{role.character}}
-{{role.release_date}}
-</div>
+  <div class="person-credit" ng-repeat="role in credits.roles">
+    <div>
+      <label>Movie:</label>
+      <div><a ui-sref="movie({movieID: role.id})">{{role.title}}</a></div>
+    </div>
+    <div>
+      <label>Character:</label>
+      <div>{{role.character}}</div>
+    </div>
+    <div>
+      <label>Release Date:</label>
+      <div>{{role.release_date | date:'MMM d, yyyy'}}</div>
+    </div>
+  </div>
 </div>

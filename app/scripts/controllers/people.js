@@ -15,6 +15,8 @@ angular.module('mymovieApp')
     vm.results = peopleResponse.results;
     vm.totalItems = peopleResponse.total_results;
     vm.onPagination = function() {
+      //todo, if the pagination link 404's it gets out of sync!!!
+      //can possibly coordinate with alertService to rollback pagination state if 404?
       $state.go('peoplepaginated', {page: vm.page, search: $stateParams.search});
       $anchorScroll();
     };

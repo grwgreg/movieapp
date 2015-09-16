@@ -1,10 +1,9 @@
 <div class="movie-single">
-  <div class="loading row" ng-show="movie.loading">LOADING</div>
-  <div ng-hide="movie.loading" class="row">
+  <div class="row">
     <div class="col-sm-4">
       <img ng-src="http://image.tmdb.org/t/p/w500/{{movie.info.poster_path}}"/>
     </div>
-    <div class="col-sm-8">
+    <div ng-show="movie.info.title" class="col-sm-8">
       <h2>{{movie.info.title}}</h2>
       <div class="movie-row">
         <div>Genres</div>

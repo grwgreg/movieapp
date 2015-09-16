@@ -10,11 +10,7 @@
  */
 angular
   .module('mymovieApp', [
-    'ngAnimate',
-    'ngCookies',
     'ngResource',
-    'ngSanitize',
-    'ngTouch',
     'ui.bootstrap',
     'ui.router',
     'ui.router.tabs'
@@ -169,14 +165,12 @@ angular
       $rootScope.loadingChildRoute = false;
     }); 
     $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
-      if (error.status === 404) {
-        $rootScope.loadingRoute = false;
-        $rootScope.loadingChildRoute = false;
-        //todo, possibly use alert service for specific child route not found to display 404 in tabs container
-        //instead of in a modal box, which may seem confusing to user
-        $log.log('404 alert service here todo');//todo
-        alertService.alert("404 Sorry this page wasn't found");
-      }
+      //todo not all $stateChangeError events are 404
+      $rootScope.loadingRoute = false;
+      $rootScope.loadingChildRoute = false;
+      //todo, possibly use alert service for specific child route not found to display 404 in tabs container
+      //instead of in a modal box, which may seem confusing to user
+      alertService.alert("404 Sorry this page wasn't found");
       $log.warn('event', event);
       $log.error('error', error);
     });

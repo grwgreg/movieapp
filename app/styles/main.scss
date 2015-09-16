@@ -1,23 +1,86 @@
 // bower:scss
 // endbower
 
+$bgblue: #0d0e19;
+
+//$fgblue: #151722;
+$fgblue: #252838;
+$lblue: #4c97df;
+$pink: #fe3297;
+$skyblue: #68dee5;
+$yellow: #fff911;
+
 img {
   max-width: 100%;
-  //todo doesn't bootstrap do this?
 }
 
-.movie-summary {
-  label {
-    min-width: 80px;
+body {
+  background: $bgblue;
+  color: white;
+}
+
+a {
+  color: $pink;
+  text-decoration: none;
+  &:hover {
+    color: $skyblue;
   }
 }
 
+a.button {
+  background: $pink;
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  padding: 4px 10px;
+  border-radius: 4px;
+  span {
+    margin-right: 6px;
+  }
+  &:hover {
+    background: $skyblue;
+    color: $bgblue;
+    text-decoration: none;
+  }
+}
+
+.person-summary,
+.movie-summary {
+  margin: 0;
+  background: $fgblue;
+  padding: 15px 0;
+  border-radius: 4px;
+  label {
+    min-width: 80px;
+  }
+  h2 {
+    margin: 0 10px 10px 0;
+    font-size: 22px;
+    line-height: 24px;
+  }
+  h2 a {
+    color: white;
+    &:hover {
+      color: $skyblue;
+      text-decoration: none;
+    }
+  }
+  .button {
+    margin-top: 10px;
+  }
+}
+
+.people-list,
 .movie-list {
   padding: 0;
   margin: 0;
-  li {
+  > li {
     list-style: none;
-    padding: 10px 0;
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+    padding: 0 5px 10px;
   }
 }
 
@@ -27,6 +90,33 @@ img {
   > div:nth-child(1) {
     min-width: 25%;
     max-width: 25%;
+  }
+}
+
+.movie-single {
+  ul {
+    padding: 0 0 0 15px;
+  }
+  .row > div:nth-child(2) {
+    background: $fgblue;
+    padding: 20px;
+  }
+  h2 {
+    margin-top: 0;
+  }
+  .glyphicon {
+    color: $pink;
+  }
+}
+
+@media all and (max-width: 991px) {
+  .people-list > li,
+  .movie-list > li {
+    display: block;
+    width: 100%;
+    h2 {
+      margin-top: 20px;
+    }
   }
 }
 
@@ -45,15 +135,32 @@ img {
 }
 
 .movie-search {
+  padding: 30px 20px 20px;
   .radio {
     display: inline-block;
     padding-right: 15px;
+  }
+  .form-control:focus {
+    border-color: $pink;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $pink;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $pink;
+  }
+  .input-group-btn {
+    z-index: 9;
+    top: -1px;
+  }
+  .btn {
+    background: $pink;
+    color: white;
+    border: none;
   }
 }
 
 .modal-content {
   padding: 20px;
   text-align: center;
+  color: black;
 }
 
 .tab-loading {
@@ -64,14 +171,41 @@ img {
 }
 
 .person {
+  h1 {
+    margin-top: 0;
+  }
+  .row > div:nth-child(2) {
+    background: $fgblue;
+    padding: 20px;
+  }
   .tab-container {
     margin-top: 40px;
   }
   div[ui-view] {
     > div {
       padding: 30px;
+      background: $fgblue;
     }
   }
+}
+
+.nav-tabs a {
+  color: $skyblue;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  background: $fgblue;
+  color: white;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+  background: $pink;
+  color: white;
+}
+
+.nav-tabs > li > a {
+  background: $bgblue;
+  border-color: white;
 }
 
 .person-credit > div,
@@ -97,5 +231,57 @@ img {
   img {
     display: block;
     width: 100%;
+  }
+}
+
+.person-summary {
+  ul {
+    padding: 0 0 8px 17px;
+  }
+  li {
+    list-style: none;
+    position: relative;
+    a {
+      color: white;
+      &:hover {
+        color: $skyblue;
+      }
+    }
+    &:before {
+      font-family: 'Glyphicons Halflings';
+      content: "\e080";
+      position: absolute;
+      top: 2px;
+      left: -16px;
+      font-size: 10px;
+    }
+  }
+}
+
+.pagination > .disabled > span, .pagination > .disabled > span:hover, .pagination > .disabled > span:focus, .pagination > .disabled > a, .pagination > .disabled > a:hover, .pagination > .disabled > a:focus,
+.pagination > li > a, .pagination > li > span {
+  background: $fgblue;
+  color: white;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+  background: $skyblue;
+  border-color: $skyblue;
+  color: $bgblue;
+}
+
+.pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus {
+  color: white;
+  background: $pink;
+}
+
+.title {
+  text-align: center;
+  a {
+    color: $skyblue;
+    text-decoration: none;
+    span {
+      color: $pink;
+    }
   }
 }

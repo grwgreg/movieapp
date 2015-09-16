@@ -11,9 +11,6 @@ angular.module('mymovieApp')
   .controller('PersonCreditsCtrl', function($stateParams, creditsResponse, $scope, movieData) {
     var vm = this;
 
-console.log('credits resolve', creditsResponse);
-console.log('parent scope', $scope.person);
-
     //this is bad
     //when I navigate directly to this child state, the parent's resolve function is never called, so the parent
     //controller never sets the data for the parent view

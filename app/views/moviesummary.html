@@ -13,7 +13,7 @@
       <rating ng-model="movieData.vote_average" max="10" readonly="true"></rating>
       <span>({{movieData.vote_count}} votes)</span>
     </div>
-    <a ui-sref="movie({movieID: 'movieData.id'})" class="button">
+    <a ui-sref="movie({movieID: movieData.id})" class="button">
       <span class="glyphicon glyphicon-plus"></span>View Full Details
     </a>
   </div>                     
